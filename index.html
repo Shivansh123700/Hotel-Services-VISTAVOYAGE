@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>complete responsive hotel booking website </title>
+
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style.css">
+
+   <link rel="stylesheet" href="css/login.css">
+   
+</head>
+<body>
+   
+<!-- header section starts  -->
+
+<section class="header">
+
+   <div class="flex">
+      <img src="images/Picture1.png" alt="">
+      <a href="login.html" class="btn">Login</a>
+      <div id="menu-btn" class="fas fa-bars"></div>
+   </div>
+
+   <nav class="navbar">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#reservation">Reservation</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+      <a href="#reviews">Reviews</a>
+      <a href="chatbot.html">AI</a>
+   </nav>
+
+</section>
+<!-- header section ends -->
+
+<!-- home section starts  -->
+
+<section class="home" id="home">
+
+   <div class="swiper home-slider">
+
+      <div class="swiper-wrapper">
+
+         <div class="box swiper-slide">
+            <img src="images/ITC-sharetton-pic.jpg" alt="">
+            <div class="flex">
+               <h3>HOTEL VIEW</h3>
+               <a href="#availability" class="btn">Check availability</a>
+            </div>
+         </div>
+         <div class="box swiper-slide">
+            <img src="images/Screenshot 2024-01-24 at 12.13.22 PM.png" alt="">
+            <div class="flex">
+               <h3>RECEPTION</h3>
+               <a href="#reservation" class="btn">make a reservation</a>
+            </div>
+         </div>
+
+         <div class="box swiper-slide">
+            <img src="images/home-img-3.jpg" alt="">
+            <div class="flex">
+               <h3>luxurious halls</h3>
+               <a href="#contact" class="btn">contact us</a>
+            </div>
+         </div>
+
+         <div class="box swiper-slide">
+            <img src="images/home-img-1.jpg" alt="">
+            <div class="flex">
+               <h3>Emerald Class Rooms</h3>
+               <a href="#contact" class="btn">Book Now</a>
+            </div>
+         </div>
+
+         <div class="box swiper-slide">
+            <img src="images/home-img-2.jpg" alt="">
+            <div class="flex">
+               <h3>BAR</h3>
+               <a href="#contact" class="btn">View Menu</a>
+            </div>
+         </div>
+
+         <div class="box swiper-slide">
+            <img src="images/8650e6a9_z.jpg" alt="">
+            <div class="flex">
+               <h3>Pool View</h3>
+               <a href="#contact" class="btn">contact us</a>
+            </div>
+         </div>
+
+         <div class="box swiper-slide">
+            <img src="images/dynasty-weddings.jpg" alt="">
+            <div class="flex">
+               <h3>Banquet halls</h3>
+               <a href="#contact" class="btn">contact us</a>
+            </div>
+         </div>
+
+      </div>
+
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+
+   </div>
+
+</section>
+
+<!-- home section ends -->
+
+<!-- availability section starts  -->
+
+<section class="availability" id="availability">
+
+   <form action="" method="post">
+      <div class="flex">
+         <div class="box">
+            <p>check in <span>*</span></p>
+            <input type="date" name="Check_in" class="input" required>
+         </div>
+         <div class="box">
+            <p>check out <span>*</span></p>
+            <input type="date" name="Check_out" class="input" required>
+         </div>
+         <div class="box">
+            <p>adults <span>*</span></p>
+            <select name="adults" class="input" required>
+               <option value="1">1 adult</option>
+               <option value="2">2 adults</option>
+               <option value="3">3 adults</option>
+               <option value="4">4 adults</option>
+               <option value="5">5 adults</option>
+               <option value="6">6 adults</option>
+            </select>
+         </div>
+         <div class="box">
+            <p>childs <span>*</span></p>
+            <select name="childs" class="input" required>
+               <option value="-">0 child</option>
+               <option value="1">1 child</option>
+               <option value="2">2 childs</option>
+               <option value="3">3 childs</option>
+               <option value="4">4 childs</option>
+               <option value="5">5 childs</option>
+               <option value="6">6 childs</option>
+            </select>
+         </div>
+         <div class="box">
+            <p>rooms <span>*</span></p>
+            <select name="rooms" class="input" required>
+               <option value="1">1 room</option>
+               <option value="2">2 rooms</option>
+               <option value="3">3 rooms</option>
+               <option value="4">4 rooms</option>
+               <option value="5">5 rooms</option>
+               <option value="6">6 rooms</option>
+            </select>
+         </div>
+      </div>
+      <input type="submit" value="Check availability" name="check" class="btn">
+   </form>
+
+</section>
+
+<!-- availability section ends -->
+
+<!-- about section starts  -->
+
+<section class="about" id="about">
+
+   <div class="row">
+      <div class="image">
+         <img src="images/about-img-1.jpg" alt="">
+      </div>
+      <div class="content">
+         <h3>best staff</h3>
+         <p>The strength of the team is each individual member, and your expertise and skills significantly contribute to our collective success.</p>
+         <a href="HotelStaff.html" class="btn">Know More</a>
+      </div>
+   </div>
+
+   <div class="row revers">
+      <div class="image">
+         <img src="images/about-img-2.jpg" alt="">
+      </div>
+      <div class="content">
+         <h3>best foods</h3>
+         <p>Each bite is a journey of exquisite taste, a masterpiece on a plate.</p>
+         <a href="menu.html" class="btn">Place Order</a>
+      </div>
+   </div>
+
+   <div class="row">
+      <div class="image">
+         <img src="images/about-img-3.jpg" alt="">
+      </div>
+      <div class="content">
+         <h3>swimming pool</h3>
+         <p>Dive into a world of refreshment and relaxation at our pristine swimming pool – where every splash is a moment of pure joy.</p>
+         <a>
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Message below indicates whether Pool is Open or Closed</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: #ffffff;
+        }
+        #status {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+        .open {
+            color: green;
+        }
+        .closed {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>"The Message below indicates whether Pool is Open or Closed"</h1>
+    <p id="status"></p>
+
+    <script>
+        // Get current date and time
+        const now = new Date();
+        const currentDay = now.getDay(); // Sunday - Saturday : 0 - 6
+        const currentHour = now.getHours();
+
+        // Define swimming pool timings
+        const poolTimings = {
+            // Define timings for each day (Sunday - Saturday)
+            0: { open: 9, close: 18 }, // Sunday: 9 AM - 6 PM
+            1: { open: 8, close: 20 }, // Monday: 8 AM - 8 PM
+            2: { open: 8, close: 20 }, // Tuesday: 8 AM - 8 PM
+            3: { open: 8, close: 20 }, // Wednesday: 8 AM - 8 PM
+            4: { open: 8, close: 20 }, // Thursday: 8 AM - 8 PM
+            5: { open: 8, close: 20 }, // Friday: 8 AM - 8 PM
+            6: { open: 9, close: 18 }  // Saturday: 9 AM - 6 PM
+        };
+
+        // Check if the pool is open based on the current time
+        function isPoolOpen(day, hour) {
+            const timings = poolTimings[day];
+            if (timings) {
+                if (hour >= timings.open && hour < timings.close) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // Display the status of the swimming pool
+        function displayStatus() {
+            const statusElement = document.getElementById('status');
+            if (isPoolOpen(currentDay, currentHour)) {
+                statusElement.textContent = "The swimming pool is currently open!";
+                statusElement.classList.add('open');
+            } else {
+                statusElement.textContent = "Sorry, the swimming pool is currently closed.";
+                statusElement.classList.add('closed');
+            }
+        }
+
+        // Call the function to display the status
+        displayStatus();
+    </script>
+</body>
+</html>
+
+         </a>
+      </div>
+   </div>
+
+</section>
+
+<!-- about section ends -->
+
+<!-- services section starts  -->
+
+<section class="services">
+
+   <div class="box-container">
+
+      <div class="box">
+         <img src="images/icon-1.png" alt="">
+         <h3>food & drinks</h3>
+         <p>Indulge in a feast for the senses as our chefs artfully blend ingredients to create dishes that transcend the ordinary.</p>
+      </div>
+
+      <div class="box">
+         <img src="images/icon-2.png" alt="">
+         <h3>outdoor dining</h3>
+         <p>"Elevate your dining experience under the open sky. Our outdoor seating is a feast for your senses, where every bite is accompanied by a breath of fresh air."</p>
+      </div>
+
+      <div class="box">
+         <img src="images/icon-3.png" alt="">
+         <h3>pleasant view</h3>
+         <p>Dine with a view that's a feast for the eyes, where each table is adorned with nature's artwork</p>
+      </div>
+
+      <div class="box">
+         <img src="images/icon-4.png" alt="">
+         <h3>decorations</h3>
+         <p>Immerse yourself in a visual feast as our carefully curated decorations transform the ordinary into the extraordinary.</p>
+      </div>
+
+      <div class="box">
+         <img src="images/icon-5.png" alt="">
+         <h3>swimming pool</h3>
+         <p>Make a splash in our oasis of tranquility, where the water's embrace washes away stress and leaves you refreshed.</p>
+      </div>
+
+      <div class="box">
+         <img src="images/icon-6.png" alt="">
+         <h3>resort </h3>
+         <p>Escape to a world of luxury and tranquility at our resort, where every moment is a blend of comfort and adventure</p>
+      </div>
+
+   </div>
+
+</section>
+
+<!-- services section ends -->
+
+
+<!-- reservation section starts  -->
+
+<section class="reservation" id="reservation">
+
+   <form action="" method="post">
+      <h3>make a reservation</h3>
+      <div class="flex">
+         <div class="box">
+            <p>check in <span>*</span></p>
+            <input type="date" name="check_in" class="input" required>
+         </div>
+         <div class="box">
+            <p>check out <span>*</span></p>
+            <input type="date" name="check_out" class="input" required>
+         </div>
+         <div class="box">
+            <p>adults <span>*</span></p>
+            <select name="adults" class="input" required>
+               <option value="1">1 adult</option>
+               <option value="2">2 adults</option>
+               <option value="3">3 adults</option>
+               <option value="4">4 adults</option>
+               <option value="5">5 adults</option>
+               <option value="6">6 adults</option>
+            </select>
+         </div>
+         <div class="box">
+            <p>childs <span>*</span></p>
+            <select name="childs" class="input" required>
+               <option value="-">0 child</option>
+               <option value="1">1 child</option>
+               <option value="2">2 childs</option>
+               <option value="3">3 childs</option>
+               <option value="4">4 childs</option>
+               <option value="5">5 childs</option>
+               <option value="6">6 childs</option>
+            </select>
+         </div>
+         <div class="box">
+            <p>rooms <span>*</span></p>
+            <select name="rooms" class="input" required>
+               <option value="1">1 room</option>
+               <option value="2">2 rooms</option>
+               <option value="3">3 rooms</option>
+               <option value="4">4 rooms</option>
+               <option value="5">5 rooms</option>
+               <option value="6">6 rooms</option>
+            </select>
+         </div>
+      </div>
+      <input type="submit" value="check availability" name="check" class="btn">
+   </form>
+
+</section>
+
+<!-- reservation section ends -->
+
+<!-- gallery section starts  -->
+
+<section class="gallery" id="gallery">
+
+   <div class="swiper gallery-slider">
+      <div class="swiper-wrapper">
+         <img src="images/gallery-img-1.jpg" class="swiper-slide" alt="">
+         <img src="images/gallery-img-2.webp" class="swiper-slide" alt="">
+         <img src="images/Sheraton6.jpg" class="swiper-slide" alt="">
+         <img src="images/Sheraton5.jpg" class="swiper-slide" alt="">
+         <img src="images/gallery-img-3.webp" class="swiper-slide" alt="">
+         <img src="images/Sheraton1.jpg" class="swiper-slide" alt="">
+         <img src="images/Sheraton3.jpg" class="swiper-slide" alt="">
+         <img src="images/Sheraton4.jpg" class="swiper-slide" alt="">
+      </div>
+      <div class="swiper-pagination"></div>
+   </div>
+
+</section>
+
+<!-- gallery section ends -->
+
+<!-- contact section starts  -->
+
+<section class="contact" id="contact">
+
+   <div class="row">
+
+      <form action="" method="post">
+         <h3>How can we Help you ?</h3>
+         <input type="text" name="name" required maxlength="50" placeholder="enter your name" class="box">
+         <input type="Customer ID" name="Customer ID" required maxlength="50" placeholder="Enter your Customer ID" class="box">
+         <input type="number" name="number" required maxlength="10" min="0" max="9999999999" placeholder="enter your number" class="box">
+         <textarea name="msg" class="box" required maxlength="1000" placeholder="enter your message" cols="30" rows="10"></textarea>
+         <a href="Contact.html" input type="submit" value="send message" name="send" class="btn">Send Message</a>
+      </form>
+
+      <div class="faq">
+         <h3 class="title">frequently asked questions</h3>
+         <div class="box active">
+            <h3>how to cancel?</h3>
+            <p>Look for an option to cancel your reservation. Click on it and follow the on-screen instructions. Be sure to carefully read any information about cancellation fees or refund policies.</p>
+         </div>
+         <div class="box">
+            <h3>Is there a shuttle service to and from the airport?</h3>
+            <p>Yes, we do offer a shuttle service to and from the airport. Our complimentary shuttle runs at 24/7, and you can find it at T1,T3 Exit gate. Please let us know your flight details, and we'll be happy to assist with your transportation needs."</p>
+         </div>
+         <div class="box">
+            <h3>what are payment methods?</h3>
+            <p>Credit Cards:
+
+Credit cards are widely accepted at hotels. Major credit card brands such as Visa, MasterCard, American Express, and Discover are commonly used. The hotel may request a pre-authorization or place a hold on the card for incidentals.
+Debit Cards:
+
+Debit cards are generally accepted, but there may be some differences in policies. Hotels might place a hold on funds in your account for incidentals, so it's essential to check with the hotel about their specific debit card policies.
+Cash:
+
+We accept cash payments, especially at the time of check-out. However, many hotels prefer card payments, and some may require a credit card for reservation purposes even if you plan to pay with cash at the end of your stay.
+Mobile Payments:
+
+With the increasing popularity of mobile payment apps, some hotels may accept payments through services like Apple Pay, Google Pay, or other digital wallets. Check with the hotel to confirm their acceptance of specific mobile payment methods.
+Traveler's Checks:
+
+While less common than in the past, some hotels may still accept traveler's checks. It's advisable to check with the hotel in advance to ensure they will honor them.
+Bank Transfers:
+
+For certain types of reservations, especially for large groups or events, hotels may accept payments through bank transfers. This is typically arranged in advance with the hotel's accounting or reservations department.
+</p>
+         </div>
+         <div class="box">
+            <h3>how to claim coupons codes?</h3>
+            <p>Look for a section during the checkout process that allows you to enter a coupon code. This might be labeled as "Promo Code," "Coupon Code,".
+               Enter the coupon code you obtained into the designated field. Double-check to ensure that you've entered it correctly
+               After entering the coupon code, there is usually a button or option to apply it. Click on that button to activate the discount or promotion associated with the coupon
+            </p>
+         </div>
+         <div class="box">
+            <h3>How secure is the hotel?</h3>
+            <p>Surveillance: Many hotels employ surveillance cameras in public areas, entrances, and hallways to monitor and enhance security.
+
+               Key Card Access: Modern hotels often use key card systems for room access, which can enhance security by limiting entry to authorized guests.
+               
+               Security Personnel: Larger hotels may have on-site security personnel to monitor the premises and respond to any security concerns.
+               
+               Emergency Procedures: Hotels typically have established emergency procedures, including fire evacuation plans and protocols for other potential crises.
+               
+               Room Safes: Many hotels provide in-room safes for guests to secure their valuables.
+               
+               Guest Verification: Front desk staff may require proper identification during check-in to ensure that only registered guests have access to the rooms.
+               
+               Lighting: Well-lit public areas and entrances contribute to the overall safety and security of a hotel.
+               
+               Secure Parking: If the hotel offers parking facilities, having well-lit and secure parking areas can contribute to guest safety.</p>
+         </div>
+      </div>
+
+   </div>
+
+</section>
+
+<!-- contact section ends -->
+
+<!-- reviews section starts  -->
+
+<section class="reviews" id="reviews">
+
+   <div class="swiper reviews-slider">
+
+      <div class="swiper-wrapper">
+         <div class="swiper-slide box">
+            <img src="images/pic-1.png" alt="">
+            <h3>Christopher Harris</h3>
+            <p>The attention to detail at Sheraton truly sets it apart. The room was spotlessly clean, the staff went above and beyond to make us comfortable, and the amenities were top-notch.</p>
+         </div>
+         <div class="swiper-slide box">
+            <img src="images/pic-2.png" alt="">
+            <h3>Lily Walker</h3>
+            <p>I can't recommend Sheraton enough! The central location, combined with the modern and stylish design, made our stay both convenient and aesthetically pleasing.</p>
+         </div>
+         <div class="swiper-slide box">
+            <img src="images/pic-3.png" alt="">
+            <h3>Matthew Wright</h3>
+            <p>From the moment we stepped into Sheraton, we knew we were in for a treat. The charming ambiance, excellent dining options, and attentive service made our stay unforgettable.</p>
+         </div>
+         <div class="swiper-slide box">
+            <img src="images/pic-4.png" alt="">
+            <h3>Mia Lewis</h3>
+            <p>We chose Sheraton for its reputation, and it lived up to every positive review. The seamless check-in process, comfortable rooms, and excellent dining options made our stay truly enjoyable.</p>
+         </div>
+         <div class="swiper-slide box">
+            <img src="images/pic-5.png" alt="">
+            <h3>Alexander Johnson</h3>
+            <p>Our stay at Sheraton was nothing short of exceptional. From the warm welcome at check-in to the impeccable service throughout, every moment was a delight.</p>
+         </div>
+         <div class="swiper-slide box">
+            <img src="images/pic-6.png" alt="">
+            <h3>Hyejin Kim</h3>
+            <p>If you're looking for a perfect blend of luxury and hospitality, Sheraton is the place to be. The attention to detail and commitment to guest satisfaction make it a standout choice for any traveler.</p>
+         </div>
+      </div>
+
+      <div class="swiper-pagination"></div>
+   </div>
+
+</section>
+
+
+<!-- expenditure section starts -->
+
+<!-- Expenditure ends -->
+
+<!-- reviews section ends  -->
+
+<!-- footer section starts  -->
+
+<section class="footer">
+
+   <div class="box-container">
+
+      <div class="box">
+         <a href="tel:1800-103-2482"><i class="fas fa-phone"></i> 1800-103-2482</a>
+         <a href="tel:91 0124 6718000"><i class="fas fa-phone"></i> +91 0124 6718000</a>
+         <a href="mailto:clubitc.care@itc.in"><i class="fas fa-envelope"></i> clubitc.care@itc.in</a>
+         <a href="https://www.google.com/maps/place/Sheraton+New+Delhi+Hotel/@28.5268412,77.213463,17z/data=!3m1!4b1!4m9!3m8!1s0x390ce1f4bd7c66e9:0x756f2d04d0744017!5m2!4m1!1i2!8m2!3d28.5268412!4d77.2160379!16s%2Fg%2F1tfv3hsx?entry=ttu" id="Sheraton Saket Location"><i class="fas fa-map-marker-alt"></i> Saket District Centre, District Centre, Sector 6, Saket, New Delhi, Delhi 110017</a>
+      </div>
+
+      <div class="box">
+         <a href="#home">home</a>
+         <a href="#about">about</a>
+         <a href="#reservation">reservation</a>
+         <a href="#gallery">gallery</a>
+         <a href="#contact">contact</a>
+         <a href="#reviews">reviews</a>
+      </div>
+
+      <div class="box">
+         <a href="https://www.facebook.com/search/top/?q=sheraton%20hotel%20saket"><i class="fab fa-facebook-f"></i> Facebook</a>
+         <a href="https://twitter.com/sheratonhotels"><i class="fab fa-twitter"></i> Twitter</a>
+         <a href="https://www.instagram.com/sheraton_newdelhi/?hl=en"><i class="fab fa-instagram"></i> Instagram</a>
+         <a href="https://in.linkedin.com/company/sheraton-new-delhi-hotel-itc-group-"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      </div>
+
+   </div>
+
+   <div class="credit">&copy; copyright @ 2022 by mr. web designer | all rights reseved!</div>
+
+</section>
+
+<!-- footer section ends -->
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+</body>
+</html>

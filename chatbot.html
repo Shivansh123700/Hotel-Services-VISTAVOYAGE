@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat Bot</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url('images/65046bf150d1abb7e5911702_x-65046bcfdc4f0.webp'); 
+      background-size: cover;
+      background-position: center;
+    }
+
+    .chat-container {
+      width: 80%;
+      max-width: 600px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      background-image: url('images/12.avif'); 
+      background-size: cover;
+      background-position: center;
+    }
+
+    .chat-header {
+      padding: 20px;
+      background-color: #007bff;
+      color: #fff;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      font-family: 'Arial Black', sans-serif; 
+    }
+
+    .chat-box {
+      height: 350px;
+      overflow-y: scroll;
+      padding: 20px;
+    }
+
+    .chat-box p {
+      margin: 5px 0;
+    }
+
+    .input-container {
+      padding: 20px;
+      text-align: center;
+    }
+
+    input[type="text"] {
+      width: calc(100% - 30px);
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .send-button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: #fff;
+      font-size: 16px;
+    }
+
+    .send-button:hover {
+      background-color: #0056b3;
+    }
+
+    .bot-message {
+      color: white;
+    }
+
+    .user-message {
+      color: peachpuff;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">Chat with Synthia</div>
+    <div class="chat-box" id="chat-box"></div>
+    <div class="input-container">
+      <input type="text" id="user-input" placeholder="Ask a question...">
+      <button class="send-button" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    function sendMessage() {
+      var userInput = document.getElementById("user-input").value.trim();
+      if (userInput === "") return;
+
+      var chatBox = document.getElementById("chat-box");
+      var userMessage = document.createElement("p");
+      userMessage.innerText = "You: " + userInput;
+      userMessage.classList.add("user-message"); 
+      chatBox.appendChild(userMessage);
+
+      var botResponse = getBotResponse(userInput);
+      var botMessage = document.createElement("p");
+      botMessage.innerText = "Synthia: " + botResponse;
+      botMessage.classList.add("bot-message"); 
+      chatBox.appendChild(botMessage);
+
+      chatBox.scrollTop = chatBox.scrollHeight;
+      document.getElementById("user-input").value = "";
+    }
+
+    function getBotResponse(message) {
+      var responses = {
+        "hi": "Hello! I am SYNTHIA, How can I help you?",
+        "expenditure": "Please let me know your Customer ID",
+        "whats my expenditure ?": "Please let me know your Customer ID",
+        "what is my expenditure?": "Please let me know your Customer ID",
+        "what is my expenditure": "Please let me know your Customer ID",
+        "whats my expenditure": "Please let me know your Customer ID",
+        "ss0001": "$ 459",
+        "ss0002": "$ 698",
+        "ss0003": "$ 544",
+        "ss0004": "$ 856",
+        "ss0005": "$ 387",
+        "ss0006": "$ 521",
+        "ss0007": "$ 739",
+        "ss0008": "$ 212",
+        "ss0009": "$ 1007",
+        "ss0010": "$ 491",
+        "ss0011": "$ 387",
+        "ss0012": "$ 324",
+        "ss0013": "$ 765",
+        "ss0014": "$ 886",
+        "ss0015": "$ 888",
+        "ss0016": "$ 566",
+        "ss0017": "$ 665",
+        "ss0018": "$ 987",
+        "ss0019": "$ 345",
+        "ss0020": "$ 987",
+        "ss0021": "$ 345",
+        "ss0022": "$ 1009",
+        "ss0023": "$ 1232",
+        "ss0024": "$ 387",
+        "ss0025": "$ 566",
+        "ss0026": "$ 986",
+        "ss0027": "$ 555",
+        "ss0028": "$ 1566",
+        "ss0029": "$ 867",
+        "ss0030": "$ 554",
+        "ss0031": "$ 245",
+        "ss0032": "$ 988",
+        "ss0033": "$ 1003",
+        "ss0034": "$ 344",
+        "ss0035": "$ 2453",
+        "ss0036": "$ 476",
+        "ss0037": "$ 876",
+        "ss0038": "$ 276",
+        "ss0039": "$ 981",
+        "is the pool open right now?": "Yes",
+        "is the pool open right now": "Yes",
+        "is the pool open": "Yes",
+        "pool": "Yes it is open",
+        "is the swimming pool open right now": "Yes",
+        "is the swimming pool open ": "Yes",
+        "thank you": "Anything else I can do for you Sir?",
+        "no": "Was it helpful? (y/n)",
+        "yes": "What else can i do for you Sir? ",
+        "y": "Thank you for Contacting Sheraton Hotel Saket",
+        "n": "Really Sorry for not helping you solve your problem ill try my best again just let me know what else I can do for you sir?",
+        "wifi password": "ABC123",
+        "is the gym open": "yes gym is open 24/7 !!!!",
+        "where is the laundry": "Laundry is on 2nd floor near the kids play area you can either call the staff via this website or physically access the same. You will get the laundry in maximum span of 1 day",
+        "where is laundry": "Laundry is on 2nd floor near the kids play area you can either call the staff via this website or physically access the same. You will get the laundry in maximum span of 1 day",
+        "laundry": "Laundry is on 2nd floor near the kids play area you can either call the staff via this website or physically access the same. You will get the laundry in maximum span of 1 day",
+        "gym": "yes gym is open 24/7 !!!!",
+        "security room": "Security is opposite to the reception on ground floor you can visit there physically or send your problem to them via this website",
+      };
+
+      var response = responses[message.toLowerCase()];
+      return response || responses["default"];
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Received</title>
+    <style>
+        /* CSS for styling */
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            margin-top: 0;
+        }
+        p {
+            margin: 10px 0;
+        }
+        strong {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Message Sent</h2>
+        <p><strong>Customer ID:</strong> <span id="customerId"></span></p>
+        <p><strong>Name:</strong> <span id="name"></span></p>
+        <p><strong>Message:</strong> <span id="message"></span></p>
+        <p>Message sent successfully!</p>
+    </div>
+
+    <script>
+        // JavaScript code to parse URL parameters and display them
+        const urlParams = new URLSearchParams(window.location.search);
+        const customerId = urlParams.get('Customer_ID');
+        const name = urlParams.get('name');
+        const message = urlParams.get('msg');
+
+        // Set the values in the HTML
+        document.getElementById('customerId').innerText = customerId;
+        document.getElementById('name').innerText = name;
+        document.getElementById('message').innerText = message;
+    </script>
+</body>
+</html>

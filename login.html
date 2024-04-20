@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('images/loginimagebg2.jpeg'); 
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 500px; /* Increased width */
+      margin: 50px auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.7); 
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #666;
+    }
+
+    input[type="text"] {
+      width: calc(100% - 22px); /* Adjusted width */
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #customerDetails {
+      margin-top: 20px;
+      padding: 20px;
+    }
+
+    p {
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .back-button {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .back-button button {
+      background-color: #dc3545;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    .back-button button:hover {
+      background-color: #c82333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Welcome to our Hotel!</h2>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="customerName">Name:</label>
+        <input type="text" id="customerName" required>
+      </div>
+      <div class="form-group">
+        <label for="customerId">Customer ID:</label>
+        <input type="text" id="customerId" required>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <div id="customerDetails" class="hidden">
+      <h2>Customer Details</h2>
+      <p id="customerNameDisplay"></p>
+      <p id="customerIdDisplay"></p>
+      <p id="roomNumber"></p>
+      <p id="phoneNumber"></p>
+      <p id="email"></p>
+      <p id="totalExpenditure"></p>
+      <div class="back-button">
+        <button id="backButton">Back</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Sample customer details
+    const customers = [
+      { id: 'SS0001', name: 'Shivansh Tanwar', roomNumber: '101', phoneNumber: '+91 9311877015', email: 'shivansh@gmail.com', totalExpenditure: 459 },
+      { id: 'SS0002', name: 'Vartika Pathak', roomNumber: '102', phoneNumber: '+91 9310559970', email: 'vartika@gmail.com', totalExpenditure: 698 },
+      { id: 'SS0003', name: 'Rahul Sharma', roomNumber: '103', phoneNumber: '+91 98765 43210', email: 'rahul.sharma@gmail.com', totalExpenditure: 544 },
+      { id: 'SS0004', name: 'Priya Patel', roomNumber: '104', phoneNumber: '+91 87654 32109', email: 'priya@gmail.com', totalExpenditure: 856 },
+      { id: 'SS0005', name: 'John Smith', roomNumber: '105', phoneNumber: '+1 555-123-4567', email: 'shivansh@gmail.com', totalExpenditure: 387 },
+      { id: 'SS0006', name: 'Emily Johnson', roomNumber: '106', phoneNumber: '+1 555-987-6543', email: 'vartika@gmail.com', totalExpenditure: 521 },
+      { id: 'SS0007', name: 'Rajesh Kumar', roomNumber: '107', phoneNumber: '+91 99887 77666', email: 'shivansh@gmail.com', totalExpenditure: 739 },
+      { id: 'SS0008', name: 'Sophia Lee', roomNumber: '108', phoneNumber: '+1 555-321-9876', email: 'vartika@gmail.com', totalExpenditure: 212 },
+      { id: 'SS0009', name: 'Aarav Gupta', roomNumber: '109', phoneNumber: '+91 88777 66555', email: 'shivansh@gmail.com', totalExpenditure: 1007 },
+      { id: 'SS0010', name: 'Emma Wilson', roomNumber: '110', phoneNumber: '+1 555-456-7890', email: 'vartika@gmail.com', totalExpenditure: 491 },
+      { id: 'SS0011', name: 'Aditi Shah', roomNumber: '111', phoneNumber: '+91 77788 99900', email: 'shivansh@gmail.com', totalExpenditure: 387 },
+      { id: 'SS0012', name: 'Liam Brown', roomNumber: '112', phoneNumber: '+1 555-789-1234', email: 'vartika@gmail.com', totalExpenditure: 324 },
+      { id: 'SS0013', name: 'Ananya Desai', roomNumber: '113', phoneNumber: '+91 96543 21098', email: 'shivansh@gmail.com', totalExpenditure: 765 },
+      { id: 'SS0014', name: 'David Clark', roomNumber: '114', phoneNumber: '+1 555-234-5678', email: 'vartika@gmail.com', totalExpenditure: 886 },
+      { id: 'SS0015', name: 'Aisha Khan', roomNumber: '115', phoneNumber: '+91 98765 43210', email: 'shivansh@gmail.com', totalExpenditure: 239 },
+      { id: 'SS0016', name: 'Michael Anderson', roomNumber: '116', phoneNumber: '+1 555-876-5432', email: 'vartika@gmail.com', totalExpenditure: 945 },
+      { id: 'SS0017', name: 'Neha Patel', roomNumber: '201', phoneNumber: '+91 91234 56789', email: 'shivansh@gmail.com', totalExpenditure: 888 },
+      { id: 'SS0018', name: 'Sarah Miller', roomNumber: '202', phoneNumber: '+1 555-345-6789', email: 'vartika@gmail.com', totalExpenditure: 566 },
+      { id: 'SS0019', name: 'Arjun Singh', roomNumber: '203', phoneNumber: '+91 99887 77666', email: 'shivansh@gmail.com', totalExpenditure: 768 },
+      { id: 'SS0020', name: 'Olivia Taylor', roomNumber: '204', phoneNumber: '+1 555-987-6543', email: 'vartika@gmail.com', totalExpenditure: 877 },
+      { id: 'SS0021', name: 'Rohan Mehta', roomNumber: '205', phoneNumber: '+91 87654 32109', email: 'shivansh@gmail.com', totalExpenditure: 665 },
+      { id: 'SS0022', name: 'Ethan Harris', roomNumber: '206', phoneNumber: '+1 555-876-5432', email: 'vartika@gmail.com', totalExpenditure: 987 },
+      { id: 'SS0023', name: 'Riya Choudhury', roomNumber: '207', phoneNumber: '+91 99999 88888', email: 'shivansh@gmail.com', totalExpenditure: 345 },
+      { id: 'SS0024', name: 'Jessica Martinez', roomNumber: '208', phoneNumber: '+1 555-456-7890', email: 'vartika@gmail.com', totalExpenditure: 1009 },
+      { id: 'SS0025', name: 'Kabir Malhotra', roomNumber: '209', phoneNumber: '+91 77777 88888', email: 'shivansh@gmail.com', totalExpenditure: 1232 },
+      { id: 'SS0026', name: 'Benjamin White', roomNumber: '210', phoneNumber: '+1 555-987-6543', email: 'vartika@gmail.com', totalExpenditure: 387 },
+      { id: 'SS0027', name: 'Maya Sharma', roomNumber: '211', phoneNumber: '+91 98765 43210', email: 'shivansh@gmail.com', totalExpenditure: 987 },
+      { id: 'SS0028', name: 'Akash Verma', roomNumber: '212', phoneNumber: '+91 98765 43210', email: 'vartika@gmail.com', totalExpenditure: 566 },
+      { id: 'SS0028', name: 'Samantha Taylor', roomNumber: '213', phoneNumber: '+1 555-234-5678', email: 'vartika@gmail.com', totalExpenditure: 986 },
+      { id: 'SS0028', name: 'Vikram Reddy', roomNumber: '214', phoneNumber: '+91 87654 32109', email: 'vartika@gmail.com', totalExpenditure: 555 },
+      { id: 'SS0028', name: 'Christopher Johnson', roomNumber: '215', phoneNumber: '+1 555-345-6789', email: 'vartika@gmail.com', totalExpenditure: 1566 },
+      { id: 'SS0029', name: 'Priyanka Das', roomNumber: '216', phoneNumber: '+91 91234 56789', email: 'shivansh@gmail.com', totalExpenditure: 867 },
+      { id: 'SS0030', name: 'Daniel Williams', roomNumber: '301', phoneNumber: '+1 555-456-7890', email: 'vartika@gmail.com', totalExpenditure: 554 },
+      { id: 'SS0031', name: 'Natasha Gupta', roomNumber: '302', phoneNumber: '+91 99887 77666', email: 'shivansh@gmail.com', totalExpenditure: 245 },
+      { id: 'SS0032', name: 'Ryan Patel', roomNumber: '303', phoneNumber: '+1 555-567-8901', email: 'vartika@gmail.com', totalExpenditure: 988 },
+      { id: 'SS0033', name: 'Aaradhya Singh', roomNumber: '304', phoneNumber: '+91 99999 88888', email: 'shivansh@gmail.com', totalExpenditure: 1033 },
+      { id: 'SS0034', name: 'Victoria Brown', roomNumber: '305', phoneNumber: '+1 555-678-9012', email: 'vartika@gmail.com', totalExpenditure: 344 },
+      { id: 'SS0035', name: 'Siddharth Sharma', roomNumber: '306', phoneNumber: '+91 77777 88888', email: 'shivansh@gmail.com', totalExpenditure: 2453 },
+      { id: 'SS0036', name: 'Emily Wilson', roomNumber: '307', phoneNumber: '+1 555-789-0123', email: 'vartika@gmail.com', totalExpenditure: 476 },
+      { id: 'SS0037', name: 'Arnav Patel', roomNumber: '308', phoneNumber: '+91 98765 67890', email: 'vartika@gmail.com', totalExpenditure: 876 },
+      { id: 'SS0038', name: 'Ethan Thomas', roomNumber: '309', phoneNumber: '+1 555-890-1234', email: 'vartika@gmail.com', totalExpenditure: 276 },
+      { id: 'SS0039', name: 'Nandini Mehta', roomNumber: '310', phoneNumber: '+91 87654 98765', email: 'vartika@gmail.com', totalExpenditure: 981 },
+    ];
+
+    const loginForm = document.getElementById('loginForm');
+    const customerDetails = document.getElementById('customerDetails');
+    const roomNumberDisplay = document.getElementById('roomNumber');
+    const phoneNumberDisplay = document.getElementById('phoneNumber');
+    const customerNameDisplay = document.getElementById('customerNameDisplay');
+    const customerIdDisplay = document.getElementById('customerIdDisplay');
+    const emailDisplay = document.getElementById('email');
+    const totalExpenditureDisplay = document.getElementById('totalExpenditure');
+    const backButton = document.getElementById('backButton');
+
+    loginForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const customerId = document.getElementById('customerId').value;
+      const customerName = document.getElementById('customerName').value;
+
+      const customer = customers.find(c => c.id === customerId && c.name === customerName);
+
+      if (customer) {
+        customerNameDisplay.textContent = `Name: ${customer.name}`;
+        customerIdDisplay.textContent = `Customer ID: ${customer.id}`;
+        roomNumberDisplay.textContent = `Room Number: ${customer.roomNumber}`;
+        phoneNumberDisplay.textContent = `Phone Number: ${customer.phoneNumber}`;
+        emailDisplay.textContent = `Email: ${customer.email}`;
+        totalExpenditureDisplay.textContent = `Total Expenditure: $${customer.totalExpenditure.toFixed(2)}`;
+        customerDetails.classList.remove('hidden');
+      } else {
+        alert('Invalid Customer ID or Name');
+      }
+    });
+
+    backButton.addEventListener('click', function() {
+      customerDetails.classList.add('hidden');
+      document.getElementById('customerId').value = '';
+      document.getElementById('customerName').value = '';
+    });
+
+    // Function to update total expenditure
+    function updateTotalExpenditure(customerId, amount) {
+      const customer = customers.find(c => c.id === customerId);
+      if (customer) {
+        customer.totalExpenditure += amount;
+        totalExpenditureDisplay.textContent = `Total Expenditure: $${customer.totalExpenditure.toFixed(2)}`;
+      }
+    }
+  </script>
+</body>
+</html>

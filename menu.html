@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Food Menu</title>
+  <style>
+    /* CSS styles go here */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('images/Menu BG image.jpeg');
+      background-color: #f8f9fa;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .title {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 30px;
+      color: #333333;
+    }
+    .menu-box {
+      margin-bottom: 20px;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow-y: auto; /* Add a vertical scrollbar */
+      max-height: 300px; /* Set a max height to enable scrolling */
+    }
+    .menu-box h2 {
+      font-size: 24px;
+      color: #444444;
+      margin-bottom: 10px;
+    }
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding-right: 20px; /* Adjust for scrollbar width */
+    }
+    .menu-item {
+      width: 45%;
+      border: 1px solid #cccccc;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .menu-item button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    .menu-item button:hover {
+      background-color: #45a049;
+    }
+    .menu-item .quantity {
+      background-color: #dddddd;
+      color: #333333;
+      padding: 0 10px;
+      border-radius: 5px;
+      margin: 0 10px;
+    }
+    .cart {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .cart-title {
+      font-size: 24px;
+      color: #444444;
+      margin-bottom: 20px;
+    }
+    .cart-items {
+      list-style-type: none;
+      padding: 0;
+      margin-bottom: 20px;
+    }
+    .cart-items li {
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: #333333;
+    }
+    .total {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .checkout-btn {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .checkout-btn:hover {
+      background-color: #45a049;
+    }
+    .order-placed {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 255, 0, 0.8);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      animation: fadeOut 3s ease-in-out forwards;
+      display: none;
+    }
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        display: none;
+      }
+    }
+    .menu-item img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">Delhi Pavilion Sheraton Saket</h1>
+    <h1 class="title">Menu</h1>
+    <!-- Box 1: Snacks -->
+    <div class="menu-box">
+      <h2>Snacks</h2>
+      <div class="menu" id="snacks-menu">
+        <div class="menu-item" id="chips-item"><img src="images/Antipasto garlic bread.jpeg" alt="Chips"> Chips - $5.99 <button onclick="modifyCart('chips', 'chips-quantity', true)">+</button><span id="chips-quantity" class="quantity">0</span><button onclick="modifyCart('chips', 'chips-quantity', false)">-</button></div>
+        <div class="menu-item" id="nachos-item"><img src="images/Nachos-cheese.jpg" alt="Nachos"> Nachos - $8.99 <button onclick="modifyCart('nachos', 'nachos-quantity', true)">+</button><span id="nachos-quantity" class="quantity">0</span><button onclick="modifyCart('nachos', 'nachos-quantity', false)">-</button></div>
+        <div class="menu-item" id="spring-rolls-item"><img src="images/Spring Roll.jpeg" alt="Spring Rolls"> Spring Rolls - $7.99 <button onclick="modifyCart('spring-rolls', 'spring-rolls-quantity', true)">+</button><span id="spring-rolls-quantity" class="quantity">0</span><button onclick="modifyCart('spring-rolls', 'spring-rolls-quantity', false)">-</button></div>
+      </div>
+    </div>
+    <!-- Box 2: Main Course -->
+    <div class="menu-box">
+      <h2>Main Course</h2>
+      <div class="menu" id="main-course-menu">
+        <div class="menu-item" id="steak-item"><img src="images/Chicken-Steak.jpeg" alt="Steak"> Steak - $20.99 <button onclick="modifyCart('steak', 'steak-quantity', true)">+</button><span id="steak-quantity" class="quantity">0</span><button onclick="modifyCart('steak', 'steak-quantity', false)">-</button></div>
+        <div class="menu-item" id="pasta-item"><img src="images/Pasta.jpeg" alt="Pasta"> Pasta - $12.99 <button onclick="modifyCart('pasta', 'pasta-quantity', true)">+</button><span id="pasta-quantity" class="quantity">0</span><button onclick="modifyCart('pasta', 'pasta-quantity', false)">-</button></div>
+        <div class="menu-item" id="burger-item"><img src="images/Burger .jpeg" alt="Burger"> Burger - $9.99 <button onclick="modifyCart('burger', 'burger-quantity', true)">+</button><span id="burger-quantity" class="quantity">0</span><button onclick="modifyCart('burger', 'burger-quantity', false)">-</button></div>
+      </div>
+    </div>
+    <!-- Box 3: Alcoholic Beverages -->
+    <div class="menu-box">
+      <h2>Alcoholic Beverages</h2>
+      <div class="menu" id="alcoholic-beverage-menu">
+        <div class="menu-item" id="wine-item"><img src="images/Wine.webp" alt="Wine"> Wine - $25.99 <button onclick="modifyCart('wine', 'wine-quantity', true)">+</button><span id="wine-quantity" class="quantity">0</span><button onclick="modifyCart('wine', 'wine-quantity', false)">-</button></div>
+        <div class="menu-item" id="beer-item"><img src="images/Beer.jpeg" alt="Beer"> Beer - $6.99 <button onclick="modifyCart('beer', 'beer-quantity', true)">+</button><span id="beer-quantity" class="quantity">0</span><button onclick="modifyCart('beer', 'beer-quantity', false)">-</button></div>
+        <div class="menu-item" id="cocktail-item"><img src="images/cockatil.jpeg" alt="Cocktail"> Cocktail - $12.99 <button onclick="modifyCart('cocktail', 'cocktail-quantity', true)">+</button><span id="cocktail-quantity" class="quantity">0</span><button onclick="modifyCart('cocktail', 'cocktail-quantity', false)">-</button></div>
+      </div>
+    </div>
+    <!-- Box 4: Non-Alcoholic Beverages -->
+    <div class="menu-box">
+      <h2>Non-Alcoholic Beverages</h2>
+      <div class="menu" id="non-alcoholic-beverage-menu">
+        <div class="menu-item" id="juice-item"><img src="images/juice.jpeg" alt="Juice"> Juice - $4.99 <button onclick="modifyCart('juice', 'juice-quantity', true)">+</button><span id="juice-quantity" class="quantity">0</span><button onclick="modifyCart('juice', 'juice-quantity', false)">-</button></div>
+        <div class="menu-item" id="soda-item"><img src="images/Soda.jpg" alt="Soda"> Soda - $3.99 <button onclick="modifyCart('soda', 'soda-quantity', true)">+</button><span id="soda-quantity" class="quantity">0</span><button onclick="modifyCart('soda', 'soda-quantity', false)">-</button></div>
+        <div class="menu-item" id="water-item"><img src="images/Water.jpeg" alt="Water"> Water - $2.99 <button onclick="modifyCart('water', 'water-quantity', true)">+</button><span id="water-quantity" class="quantity">0</span><button onclick="modifyCart('water', 'water-quantity', false)">-</button></div>
+      </div>
+    </div>
+    <!-- Box 5: Desserts -->
+    <div class="menu-box">
+      <h2>Desserts</h2>
+      <div class="menu" id="desserts-menu">
+        <div class="menu-item" id="cake-item"><img src="images/Cake.jpeg" alt="Cake"> Cake - $8.99 <button onclick="modifyCart('cake', 'cake-quantity', true)">+</button><span id="cake-quantity" class="quantity">0</span><button onclick="modifyCart('cake', 'cake-quantity', false)">-</button></div>
+        <div class="menu-item" id="ice-cream-item"><img src="images/Ice Cream.jpeg" alt="Ice Cream"> Ice Cream - $6.99 <button onclick="modifyCart('ice-cream', 'ice-cream-quantity', true)">+</button><span id="ice-cream-quantity" class="quantity">0</span><button onclick="modifyCart('ice-cream', 'ice-cream-quantity', false)">-</button></div>
+        <div class="menu-item" id="cookies-item"><img src="images/Cookie.jpeg" alt="Cookies"> Cookies - $5.99 <button onclick="modifyCart('cookies', 'cookies-quantity', true)">+</button><span id="cookies-quantity" class="quantity">0</span><button onclick="modifyCart('cookies', 'cookies-quantity', false)">-</button></div>
+      </div>
+    </div>
+    <!-- Cart Section -->
+    <div class="cart">
+      <h2 class="cart-title">Your Cart</h2>
+      <ul class="cart-items" id="cart-items">
+        <!-- Cart items will be inserted here dynamically -->
+      </ul>
+      <div class="total">Total: $<span id="total">0.00</span></div>
+      <button class="checkout-btn" onclick="placeOrder()">Place Order</button>
+    </div>
+    <!-- Order Placed Message -->
+    <div class="order-placed" id="order-placed">Order placed <span>&#10004;</span></div>
+  </div>
+
+  <script>
+    // JavaScript logic goes here
+    let total = 0;
+    const itemsInCart = {};
+
+    function modifyCart(item, quantityId, isAddition) {
+      const itemPrice = getItemPrice(item);
+      if (isAddition) {
+        if (!itemsInCart[item]) {
+          itemsInCart[item] = 1;
+        } else {
+          itemsInCart[item]++;
+        }
+        total += itemPrice;
+      } else {
+        if (itemsInCart[item] && itemsInCart[item] > 0) {
+          itemsInCart[item]--;
+          total -= itemPrice;
+        }
+      }
+      document.getElementById('total').textContent = total.toFixed(2);
+      document.getElementById(quantityId).textContent = itemsInCart[item] || 0;
+
+      // Update the cart items display
+      updateCartDisplay(item, isAddition);
+    }
+
+    function getItemPrice(item) {
+      switch (item) {
+        case 'chips':
+          return 5.99;
+        case 'nachos':
+          return 8.99;
+        case 'spring-rolls':
+          return 7.99;
+        case 'steak':
+          return 20.99;
+        case 'pasta':
+          return 12.99;
+        case 'burger':
+          return 9.99;
+        case 'wine':
+          return 25.99;
+        case 'beer':
+          return 6.99;
+        case 'cocktail':
+          return 12.99;
+        case 'juice':
+          return 4.99;
+        case 'soda':
+          return 3.99;
+        case 'water':
+          return 2.99;
+        case 'cake':
+          return 8.99;
+        case 'ice-cream':
+          return 6.99;
+        case 'cookies':
+          return 5.99;
+        default:
+          return 0;
+      }
+    }
+
+    function updateCartDisplay(item, isAddition) {
+      const cartItems = document.getElementById('cart-items');
+      const itemName = getItemName(item);
+
+      if (isAddition) {
+        const newItem = document.createElement('li');
+        newItem.textContent = itemName;
+        cartItems.appendChild(newItem);
+      } else {
+        const items = cartItems.getElementsByTagName('li');
+        for (let i = 0; i < items.length; i++) {
+          if (items[i].textContent.includes(itemName)) {
+            cartItems.removeChild(items[i]);
+            break;
+          }
+        }
+      }
+    }
+
+    function getItemName(item) {
+      switch (item) {
+        case 'chips':
+          return 'Chips';
+        case 'nachos':
+          return 'Nachos';
+        case 'spring-rolls':
+          return 'Spring Rolls';
+        case 'steak':
+          return 'Steak';
+        case 'pasta':
+          return 'Pasta';
+        case 'burger':
+          return 'Burger';
+        case 'wine':
+          return 'Wine';
+        case 'beer':
+          return 'Beer';
+        case 'cocktail':
+          return 'Cocktail';
+        case 'juice':
+          return 'Juice';
+        case 'soda':
+          return 'Soda';
+        case 'water':
+          return 'Water';
+        case 'cake':
+          return 'Cake';
+        case 'ice-cream':
+          return 'Ice Cream';
+        case 'cookies':
+          return 'Cookies';
+        default:
+          return '';
+      }
+    }
+
+    function placeOrder() {
+      const orderPlaced = document.getElementById('order-placed');
+      orderPlaced.style.display = 'block';
+      total = 0;
+      document.getElementById('total').textContent = total.toFixed(2);
+      document.getElementById('cart-items').innerHTML = '';
+      setTimeout(() => {
+        orderPlaced.style.display = 'none';
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
